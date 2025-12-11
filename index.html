@@ -32,7 +32,7 @@
 
 <div class="player-container">
     <div class="player-card">
-        <img src="players/faker.jpg" alt="faker">
+        <img src="players/一諾.jpg" alt="一諾">
         <h3>Faker</h3>
     </div>
 
@@ -46,3 +46,57 @@
         <h3>Rookie</h3>
     </div>
 </div>
+<script>
+const players = {
+Faker: {
+img: "https://i.imgur.com/Cp8mkYF.jpeg",
+name: "Faker（李相赫）",
+team: "T1",
+role: "Mid Lane",
+awards: "3× 世界冠軍、10× LCK 冠軍"
+},
+Ruler: {
+img: "https://i.imgur.com/bbPq5b2.jpeg",
+name: "Ruler（朴載赫）",
+team: "TES",
+role: "AD Carry",
+awards: "2017 世界冠軍、3× LCK 最佳陣容"
+},
+Gumayusi: {
+img: "https://i.imgur.com/jBzvZ0V.jpeg",
+name: "Gumayusi（李民赫）",
+team: "T1",
+role: "AD Carry",
+awards: "2023 世界冠軍"
+}
+};
+
+
+function openModal(player) {
+const p = players[player];
+const modal = document.getElementById('infoModal');
+const content = document.getElementById('modalContent');
+
+
+content.innerHTML = `
+<img src="${p.img}" />
+<h2>${p.name}</h2>
+<p>隊伍：${p.team}</p>
+<p>位置：${p.role}</p>
+<p>獎項：${p.awards}</p>
+<button class="close-btn" onclick="closeModal()">關閉</button>
+`;
+
+
+modal.style.display = "flex";
+}
+
+
+function closeModal() {
+document.getElementById('infoModal').style.display = "none";
+}
+</script>
+
+
+</body>
+</html>

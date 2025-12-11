@@ -1,11 +1,92 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>我的網站</title>
-    <link rel="icon" href="icon.png">
-</head>
+<!DOCTYPE html>
+
+
 <body>
-  123456
-</body>  
+<header>LOL 職業選手資料展示（示範版）</header>
+
+
+<div class="grid">
+<!-- Faker 卡片 -->
+<div class="player-card" onclick="openModal('Faker')">
+<img src="https://i.imgur.com/Cp8mkYF.jpeg" alt="Faker">
+<div class="player-name">Faker</div>
+</div>
+
+
+<!-- Ruler 卡片 -->
+<div class="player-card" onclick="openModal('Ruler')">
+<img src="https://i.imgur.com/bbPq5b2.jpeg" alt="Ruler">
+<div class="player-name">Ruler</div>
+</div>
+
+
+<!-- Gumayusi 卡片 -->
+<div class="player-card" onclick="openModal('Gumayusi')">
+<img src="https://i.imgur.com/jBzvZ0V.jpeg" alt="Gumayusi">
+<div class="player-name">Gumayusi</div>
+</div>
+</div>
+
+
+<!-- Modal 彈出視窗 -->
+<div class="modal" id="infoModal">
+<div class="modal-content" id="modalContent">
+<!-- JS 會塞內容進來 -->
+</div>
+</div>
+
+
+<script>
+const players = {
+Faker: {
+img: "https://i.imgur.com/Cp8mkYF.jpeg",
+name: "Faker（李相赫）",
+team: "T1",
+role: "Mid Lane",
+awards: "3× 世界冠軍、10× LCK 冠軍"
+},
+Ruler: {
+img: "https://i.imgur.com/bbPq5b2.jpeg",
+name: "Ruler（朴載赫）",
+team: "TES",
+role: "AD Carry",
+awards: "2017 世界冠軍、3× LCK 最佳陣容"
+},
+Gumayusi: {
+img: "https://i.imgur.com/jBzvZ0V.jpeg",
+name: "Gumayusi（李民赫）",
+team: "T1",
+role: "AD Carry",
+awards: "2023 世界冠軍"
+}
+};
+
+
+function openModal(player) {
+const p = players[player];
+const modal = document.getElementById('infoModal');
+const content = document.getElementById('modalContent');
+
+
+content.innerHTML = `
+<img src="${p.img}" />
+<h2>${p.name}</h2>
+<p>隊伍：${p.team}</p>
+<p>位置：${p.role}</p>
+<p>獎項：${p.awards}</p>
+<button class="close-btn" onclick="closeModal()">關閉</button>
+`;
+
+
+modal.style.display = "flex";
+}
+
+
+function closeModal() {
+document.getElementById('infoModal').style.display = "none";
+}
+</script>
+
+
+</body>
 </html>

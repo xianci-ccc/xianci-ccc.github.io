@@ -1,48 +1,402 @@
-<style>
-    .player-container {
-        display: flex;
-        flex-wrap: wrap;   
-        gap: 20px;         
-        justify-content: center;
-        padding: 20px;
-    }
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KPL王者荣耀职业联赛</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a1a;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 顶部导航栏 */
+        header {
+            background-color: rgba(10, 10, 30, 0.95);
+            border-bottom: 1px solid #2a2a5a;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #ff6b00, #ffa500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: #e0e0ff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #2a2a5a;
+            color: #ffa500;
+        }
+        
+        /* 主标题区域 */
+        .hero-section {
+            background: linear-gradient(rgba(10, 10, 30, 0.85), rgba(10, 10, 30, 0.9)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .hero-content h1 {
+            font-size: 72px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ff6b00, #ffa500, #ffd700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+            letter-spacing: 2px;
+        }
+        
+        .hero-content p {
+            font-size: 24px;
+            color: #b0b0ff;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        /* 赛事简介部分 */
+        .intro-section {
+            padding: 80px 0;
+            background-color: #0f0f25;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 42px;
+            color: #ffa500;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b00, #ffa500);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .intro-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .intro-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 40px;
+        }
+        
+        .intro-text h3 {
+            font-size: 28px;
+            color: #ffa500;
+            margin-bottom: 25px;
+        }
+        
+        .intro-text p {
+            font-size: 18px;
+            color: #d0d0ff;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        /* 图片占位区域 */
+        .image-placeholder {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background-color: #1a1a35;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #3a3a6a;
+            color: #8888cc;
+            font-size: 18px;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .image-placeholder i {
+            font-size: 60px;
+            margin-bottom: 20px;
+            color: #4a4a8a;
+        }
+        
+        .image-placeholder p {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #8888cc;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: #0a0a1a;
+            border-top: 1px solid #2a2a5a;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #ff6b00, #ffa500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        .copyright {
+            color: #8888cc;
+            font-size: 16px;
+            margin-top: 30px;
+            width: 100%;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .intro-content {
+                flex-direction: column;
+            }
+            
+            .intro-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .hero-content h1 {
+                font-size: 56px;
+            }
+            
+            .hero-content p {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            
+            .hero-content h1 {
+                font-size: 42px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 32px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero-section {
+                height: 80vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-crown"></i>
+                <span>KPL</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">战队介绍</a></li>
+                    <li><a href="#">选手介绍</a></li>
+                    <li><a href="#">图集欣赏</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    .player-card {
-        width: 200px;              
-        background: #111;
-        border-radius: 12px;
-        padding: 10px;
-        text-align: center;
-        color: #fff;
-        font-family: sans-serif;
-        transition: transform 0.2s;
-    }
+    <!-- 主标题区域 -->
+    <section class="hero-section">
+        <div class="container hero-content">
+            <h1>We Are Champion</h1>
+            <p>王者荣耀职业联赛 - 移动电竞的巅峰对决</p>
+        </div>
+    </section>
 
-    .player-card:hover {
-        transform: scale(1.05);   
-    }
+    <!-- 赛事简介部分 -->
+    <section class="intro-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>赛事简介</h2>
+                <p>Brief Introduction to the event</p>
+            </div>
+            
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h3>2024年王者荣耀职业联赛 (KPL)</h3>
+                    <p>2024年王者荣耀职业联赛（简称KPL）是王者荣耀最高规格的专业电竞赛事。也是目前全球受众最多、影响力最大的移动电竞职业赛事之一。</p>
+                    <p>自2022年起，KPL全年分为春季赛和夏季赛两个赛季，单赛季分为常规赛、季后赛及总决赛。每个赛季都汇聚了国内最顶尖的职业战队，为观众带来精彩绝伦的比赛。</p>
+                    <p>KPL不仅推动了移动电竞行业的发展，也培养了大量优秀的电竞选手和解说，成为年轻人追逐电竞梦想的舞台。</p>
+                    <p>2024年KPL将继续扩大赛事规模，提升观赛体验，为全球王者荣耀爱好者带来更加精彩的赛事内容。</p>
+                </div>
+                
+                <!-- 图片占位区域 -->
+                <div class="image-placeholder">
+                    <i class="fas fa-image"></i>
+                    <div>图片位置</div>
+                    <p>请在此处插入赛事相关图片</p>
+                    <p>建议尺寸: 600px × 400px</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    .player-card img {
-        width: 100%;
-        height: 200px;            
-        object-fit: cover;        
-        border-radius: 8px;
-    }
-</style>
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">KPL 王者荣耀职业联赛</div>
+                <div class="copyright">
+                    <p>&copy; 2024 王者荣耀职业联赛(KPL) 版权所有 | 本页面为示例页面，仅用于展示</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-<div class="player-container">
-    <div class="player-card">
-        <img src="一諾.jpg" alt="一諾">
-        <h3>一諾</h3>
-    </div>
-
-    <div class="player-card">
-        <img src="players/deft.jpg" alt="deft">
-        <h3>Deft</h3>
-    </div>
-
-    <div class="player-card">
-        <img src="players/rookie.jpg" alt="rookie">
-        <h3>Rookie</h3>
-    </div>
-</div>
+    <script>
+        // 导航栏交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('nav ul li a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // 移除所有链接的active类
+                    navLinks.forEach(item => item.classList.remove('active'));
+                    // 为当前点击的链接添加active类
+                    this.classList.add('active');
+                });
+            });
+            
+            // 模拟页面滚动效果
+            const heroTitle = document.querySelector('.hero-content h1');
+            heroTitle.style.transform = 'translateY(0)';
+            heroTitle.style.opacity = '1';
+            
+            // 添加一些动态效果
+            const placeholder = document.querySelector('.image-placeholder');
+            placeholder.addEventListener('mouseenter', function() {
+                this.style.borderColor = '#ffa500';
+                this.style.boxShadow = '0 0 15px rgba(255, 165, 0, 0.3)';
+            });
+            
+            placeholder.addEventListener('mouseleave', function() {
+                this.style.borderColor = '#3a3a6a';
+                this.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

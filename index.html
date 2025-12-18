@@ -14,8 +14,8 @@
         }
         
         body {
-            background-color: #0a0a1a;
-            color: #f0f0f0;
+            background-color: #f5f5f5;
+            color: #333;
             line-height: 1.6;
         }
         
@@ -25,15 +25,28 @@
             padding: 0 20px;
         }
         
+        /* 莫兰迪色系定义 */
+        :root {
+            --primary: #8a9a5b; /* 柔和绿色 */
+            --secondary: #b8a9c9; /* 淡紫色 */
+            --accent: #d8b5b5; /* 粉色 */
+            --light: #f0e6d2; /* 米色 */
+            --dark: #5d6d7e; /* 灰蓝色 */
+            --text: #4a4a4a; /* 深灰色 */
+            --background: #f8f8f8; /* 浅灰色背景 */
+            --card-bg: #ffffff; /* 卡片背景 */
+        }
+        
         /* 顶部导航栏 */
         header {
-            background-color: rgba(10, 10, 30, 0.95);
-            border-bottom: 1px solid #2a2a5a;
+            background-color: var(--card-bg);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
         
         .nav-container {
@@ -45,10 +58,7 @@
         .logo {
             font-size: 28px;
             font-weight: bold;
-            background: linear-gradient(90deg, #ff6b00, #ffa500);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--primary);
             display: flex;
             align-items: center;
         }
@@ -68,7 +78,7 @@
         }
         
         nav ul li a {
-            color: #e0e0ff;
+            color: var(--dark);
             text-decoration: none;
             font-size: 18px;
             font-weight: 500;
@@ -78,16 +88,16 @@
         }
         
         nav ul li a:hover, nav ul li a.active {
-            background-color: #2a2a5a;
-            color: #ffa500;
+            background-color: var(--primary);
+            color: white;
         }
         
-        /* 主标题区域 */
+        /* 主标题区域 - 所有页面共用 */
         .hero-section {
-            background: linear-gradient(rgba(10, 10, 30, 0.85), rgba(10, 10, 30, 0.9)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');
+            background: linear-gradient(rgba(245, 245, 245, 0.9), rgba(245, 245, 245, 0.95)), url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');
             background-size: cover;
             background-position: center;
-            height: 100vh;
+            height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -100,25 +110,22 @@
             font-weight: bold;
             text-transform: uppercase;
             margin-bottom: 20px;
-            background: linear-gradient(90deg, #ff6b00, #ffa500, #ffd700);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+            color: var(--primary);
+            text-shadow: 0 5px 15px rgba(138, 154, 91, 0.2);
             letter-spacing: 2px;
         }
         
         .hero-content p {
             font-size: 24px;
-            color: #b0b0ff;
+            color: var(--dark);
             max-width: 800px;
             margin: 0 auto 40px;
         }
         
-        /* 赛事简介部分 */
+        /* 首页专属内容 */
         .intro-section {
             padding: 80px 0;
-            background-color: #0f0f25;
+            background-color: var(--background);
         }
         
         .section-title {
@@ -129,7 +136,7 @@
         
         .section-title h2 {
             font-size: 42px;
-            color: #ffa500;
+            color: var(--primary);
             display: inline-block;
             padding-bottom: 15px;
         }
@@ -139,7 +146,7 @@
             position: absolute;
             width: 100px;
             height: 3px;
-            background: linear-gradient(90deg, #ff6b00, #ffa500);
+            background-color: var(--accent);
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
@@ -160,15 +167,131 @@
         
         .intro-text h3 {
             font-size: 28px;
-            color: #ffa500;
+            color: var(--primary);
             margin-bottom: 25px;
         }
         
         .intro-text p {
             font-size: 18px;
-            color: #d0d0ff;
+            color: var(--text);
             line-height: 1.8;
             margin-bottom: 20px;
+        }
+        
+        /* 战队介绍页面专属内容 */
+        .teams-section {
+            padding: 80px 0;
+            background-color: var(--background);
+        }
+        
+        .teams-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .teams-title h2 {
+            font-size: 42px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .teams-title p {
+            font-size: 20px;
+            color: var(--dark);
+            font-style: italic;
+        }
+        
+        /* 战队标志网格 */
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .team-logo {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 180px;
+        }
+        
+        .team-logo:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-logo .logo-text {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .team-logo .team-name {
+            font-size: 18px;
+            color: var(--dark);
+            text-align: center;
+        }
+        
+        /* 战队介绍部分 */
+        .team-intro-section {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .team-intro-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .team-intro-title h3 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .team-intro-title p {
+            font-size: 20px;
+            color: var(--dark);
+            font-style: italic;
+        }
+        
+        .team-intro-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .team-card {
+            background-color: var(--light);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            background-color: #e8dfc8;
+        }
+        
+        .team-card h4 {
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .team-card p {
+            color: var(--text);
+            line-height: 1.7;
         }
         
         /* 图片占位区域 */
@@ -176,14 +299,14 @@
             flex: 1;
             min-width: 300px;
             height: 400px;
-            background-color: #1a1a35;
-            border-radius: 10px;
+            background-color: var(--light);
+            border-radius: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            border: 2px dashed #3a3a6a;
-            color: #8888cc;
+            border: 2px dashed var(--secondary);
+            color: var(--dark);
             font-size: 18px;
             text-align: center;
             padding: 20px;
@@ -192,19 +315,19 @@
         .image-placeholder i {
             font-size: 60px;
             margin-bottom: 20px;
-            color: #4a4a8a;
+            color: var(--secondary);
         }
         
         .image-placeholder p {
             margin-top: 10px;
             font-size: 16px;
-            color: #8888cc;
+            color: var(--dark);
         }
         
         /* 页脚 */
         footer {
-            background-color: #0a0a1a;
-            border-top: 1px solid #2a2a5a;
+            background-color: var(--card-bg);
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
             padding: 40px 0;
             text-align: center;
         }
@@ -213,23 +336,30 @@
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
+            align-items: center;
         }
         
         .footer-logo {
             font-size: 24px;
             font-weight: bold;
-            background: linear-gradient(90deg, #ff6b00, #ffa500);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--primary);
             margin-bottom: 20px;
         }
         
         .copyright {
-            color: #8888cc;
+            color: var(--dark);
             font-size: 16px;
             margin-top: 30px;
             width: 100%;
+        }
+        
+        /* 页面内容容器 - 用于切换不同页面内容 */
+        .page-content {
+            display: none;
+        }
+        
+        .page-content.active {
+            display: block;
         }
         
         /* 响应式设计 */
@@ -249,6 +379,10 @@
             
             .hero-content p {
                 font-size: 20px;
+            }
+            
+            .teams-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
         }
         
@@ -274,8 +408,16 @@
                 font-size: 18px;
             }
             
-            .section-title h2 {
+            .section-title h2, .teams-title h2 {
                 font-size: 32px;
+            }
+            
+            .team-intro-section {
+                padding: 30px;
+            }
+            
+            .team-intro-content {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -290,11 +432,16 @@
             }
             
             .hero-section {
-                height: 80vh;
+                height: 50vh;
             }
             
             .hero-content h1 {
                 font-size: 36px;
+            }
+            
+            .teams-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
         }
     </style>
@@ -309,16 +456,16 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#" class="active">首页</a></li>
-                    <li><a href="#">战队介绍</a></li>
-                    <li><a href="#">选手介绍</a></li>
-                    <li><a href="#">图集欣赏</a></li>
+                    <li><a href="#" class="nav-link active" data-page="home">首页</a></li>
+                    <li><a href="#" class="nav-link" data-page="teams">战队介绍</a></li>
+                    <li><a href="#" class="nav-link" data-page="players">选手介绍</a></li>
+                    <li><a href="#" class="nav-link" data-page="gallery">图集欣赏</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- 主标题区域 -->
+    <!-- 主标题区域 - 所有页面共用 -->
     <section class="hero-section">
         <div class="container hero-content">
             <h1>We Are Champion</h1>
@@ -326,33 +473,157 @@
         </div>
     </section>
 
-    <!-- 赛事简介部分 -->
-    <section class="intro-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>赛事简介</h2>
-                <p>Brief Introduction to the event</p>
-            </div>
-            
-            <div class="intro-content">
-                <div class="intro-text">
-                    <h3>2024年王者荣耀职业联赛 (KPL)</h3>
-                    <p>2024年王者荣耀职业联赛（简称KPL）是王者荣耀最高规格的专业电竞赛事。也是目前全球受众最多、影响力最大的移动电竞职业赛事之一。</p>
-                    <p>自2022年起，KPL全年分为春季赛和夏季赛两个赛季，单赛季分为常规赛、季后赛及总决赛。每个赛季都汇聚了国内最顶尖的职业战队，为观众带来精彩绝伦的比赛。</p>
-                    <p>KPL不仅推动了移动电竞行业的发展，也培养了大量优秀的电竞选手和解说，成为年轻人追逐电竞梦想的舞台。</p>
-                    <p>2024年KPL将继续扩大赛事规模，提升观赛体验，为全球王者荣耀爱好者带来更加精彩的赛事内容。</p>
+    <!-- 首页内容 -->
+    <div id="home-page" class="page-content active">
+        <!-- 赛事简介部分 -->
+        <section class="intro-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>赛事简介</h2>
+                    <p>Brief Introduction to the event</p>
                 </div>
                 
-                <!-- 图片占位区域 -->
-                <div class="image-placeholder">
-                    <i class="fas fa-image"></i>
-                    <div>图片位置</div>
-                    <p>请在此处插入赛事相关图片</p>
-                    <p>建议尺寸: 600px × 400px</p>
+                <div class="intro-content">
+                    <div class="intro-text">
+                        <h3>2024年王者荣耀职业联赛 (KPL)</h3>
+                        <p>2024年王者荣耀职业联赛（简称KPL）是王者荣耀最高规格的专业电竞赛事。也是目前全球受众最多、影响力最大的移动电竞职业赛事之一。</p>
+                        <p>自2022年起，KPL全年分为春季赛和夏季赛两个赛季，单赛季分为常规赛、季后赛及总决赛。每个赛季都汇聚了国内最顶尖的职业战队，为观众带来精彩绝伦的比赛。</p>
+                        <p>KPL不仅推动了移动电竞行业的发展，也培养了大量的优秀电竞选手和解说，成为年轻人追逐电竞梦想的舞台。</p>
+                        <p>2024年KPL将继续扩大赛事规模，提升观赛体验，为全球王者荣耀爱好者带来更加精彩的赛事内容。</p>
+                    </div>
+                    
+                    <!-- 图片占位区域 -->
+                    <div class="image-placeholder">
+                        <i class="fas fa-image"></i>
+                        <div>图片位置</div>
+                        <p>请在此处插入赛事相关图片</p>
+                        <p>建议尺寸: 600px × 400px</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
+
+    <!-- 战队介绍页面内容 -->
+    <div id="teams-page" class="page-content">
+        <section class="teams-section">
+            <div class="container">
+                <div class="teams-title">
+                    <h2>战队介绍</h2>
+                    <p>Team Introduction</p>
+                </div>
+                
+                <!-- 战队标志网格 -->
+                <div class="teams-grid">
+                    <div class="team-logo">
+                        <div class="logo-text">AG</div>
+                        <div class="team-name">成都AG超玩会</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">狼队</div>
+                        <div class="team-name">重庆狼队</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">E星</div>
+                        <div class="team-name">武汉eStarPro</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">WB</div>
+                        <div class="team-name">北京WB</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">DRG</div>
+                        <div class="team-name">佛山DRG</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">TTG</div>
+                        <div class="team-name">广州TTG</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">Hero</div>
+                        <div class="team-name">南京Hero久竞</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">EDG</div>
+                        <div class="team-name">上海EDG.M</div>
+                    </div>
+                </div>
+                
+                <!-- 战队介绍部分 -->
+                <div class="team-intro-section">
+                    <div class="team-intro-title">
+                        <h3>各战队介绍</h3>
+                        <p>Introduction of Each Team</p>
+                    </div>
+                    
+                    <div class="team-intro-content">
+                        <div class="team-card">
+                            <h4>AG 超玩会</h4>
+                            <p>成都AG超玩会是KPL历史最悠久的战队之一，拥有庞大的粉丝基础。曾多次获得KPL亚军，以坚韧不拔的竞技精神著称。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>狼队</h4>
+                            <p>重庆狼队是KPL传统强队，多次夺得KPL总冠军。以严谨的战术体系和出色的团队执行力闻名。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>武汉eStarPro</h4>
+                            <p>武汉eStarPro是KPL历史上夺冠次数最多的战队之一，以其侵略性的打法和出色的个人操作能力著称。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>北京WB</h4>
+                            <p>北京WB前身为TS豚首，曾创造"奇迹之夜"逆袭夺冠的传奇。以坚韧的防守和出色的逆风翻盘能力闻名。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>佛山DRG</h4>
+                            <p>佛山DRG前身为GK战队，以其创新的战术和年轻有活力的选手阵容著称，是KPL赛场上不可忽视的力量。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>广州TTG</h4>
+                            <p>广州TTG以其出色的团队配合和战术执行力著称，曾多次进入KPL总决赛，是KPL赛场上的传统强队。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 选手介绍页面内容 (暂未开发) -->
+    <div id="players-page" class="page-content">
+        <section class="teams-section">
+            <div class="container">
+                <div class="teams-title">
+                    <h2>选手介绍</h2>
+                    <p>Players Introduction</p>
+                </div>
+                <div class="team-intro-section">
+                    <div style="text-align: center; padding: 60px 0; color: var(--dark);">
+                        <i class="fas fa-users" style="font-size: 80px; margin-bottom: 30px; color: var(--secondary);"></i>
+                        <h3 style="color: var(--primary); margin-bottom: 20px;">页面开发中</h3>
+                        <p>选手介绍页面正在建设中，敬请期待！</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 图集欣赏页面内容 (暂未开发) -->
+    <div id="gallery-page" class="page-content">
+        <section class="teams-section">
+            <div class="container">
+                <div class="teams-title">
+                    <h2>图集欣赏</h2>
+                    <p>Gallery</p>
+                </div>
+                <div class="team-intro-section">
+                    <div style="text-align: center; padding: 60px 0; color: var(--dark);">
+                        <i class="fas fa-images" style="font-size: 80px; margin-bottom: 30px; color: var(--secondary);"></i>
+                        <h3 style="color: var(--primary); margin-bottom: 20px;">页面开发中</h3>
+                        <p>图集欣赏页面正在建设中，敬请期待！</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- 页脚 -->
     <footer>
@@ -367,34 +638,80 @@
     </footer>
 
     <script>
-        // 导航栏交互效果
+        // 页面切换功能
         document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('nav ul li a');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pageContents = document.querySelectorAll('.page-content');
             
+            // 默认显示首页
+            showPage('home');
+            
+            // 导航栏点击事件
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
-                    // 移除所有链接的active类
+                    e.preventDefault();
+                    
+                    // 获取要显示的页面
+                    const pageId = this.getAttribute('data-page');
+                    
+                    // 切换页面
+                    showPage(pageId);
+                    
+                    // 更新导航栏active状态
                     navLinks.forEach(item => item.classList.remove('active'));
-                    // 为当前点击的链接添加active类
                     this.classList.add('active');
                 });
             });
             
-            // 模拟页面滚动效果
-            const heroTitle = document.querySelector('.hero-content h1');
-            heroTitle.style.transform = 'translateY(0)';
-            heroTitle.style.opacity = '1';
+            // 显示指定页面的函数
+            function showPage(pageId) {
+                // 隐藏所有页面内容
+                pageContents.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // 显示目标页面
+                const targetPage = document.getElementById(pageId + '-page');
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                }
+                
+                // 根据页面调整主标题文字
+                const heroTitle = document.querySelector('.hero-content h1');
+                const heroSubtitle = document.querySelector('.hero-content p');
+                
+                switch(pageId) {
+                    case 'home':
+                        heroTitle.textContent = 'We Are Champion';
+                        heroSubtitle.textContent = '王者荣耀职业联赛 - 移动电竞的巅峰对决';
+                        break;
+                    case 'teams':
+                        heroTitle.textContent = 'We Are Champion';
+                        heroSubtitle.textContent = '王者荣耀职业联赛 - 精英战队齐聚';
+                        break;
+                    case 'players':
+                        heroTitle.textContent = 'We Are Champion';
+                        heroSubtitle.textContent = '王者荣耀职业联赛 - 明星选手风采';
+                        break;
+                    case 'gallery':
+                        heroTitle.textContent = 'We Are Champion';
+                        heroSubtitle.textContent = '王者荣耀职业联赛 - 精彩瞬间回顾';
+                        break;
+                }
+            }
             
             // 添加一些动态效果
-            const placeholder = document.querySelector('.image-placeholder');
-            placeholder.addEventListener('mouseenter', function() {
-                this.style.borderColor = '#ffa500';
-                this.style.boxShadow = '0 0 15px rgba(255, 165, 0, 0.3)';
-            });
-            
-            placeholder.addEventListener('mouseleave', function() {
-                this.style.borderColor = '#3a3a6a';
-                this.style.boxShadow = 'none';
+            const placeholders = document.querySelectorAll('.image-placeholder, .team-logo');
+            placeholders.forEach(placeholder => {
+                placeholder.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                    this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+                });
+                
+                placeholder.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
+                });
             });
         });
     </script>

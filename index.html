@@ -178,6 +178,30 @@
             margin-bottom: 20px;
         }
         
+        /* 图片占位区域 */
+        .image-placeholder {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background-color: var(--light);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed var(--secondary);
+            color: var(--dark);
+            font-size: 18px;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .image-placeholder i {
+            font-size: 60px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
         /* 战队介绍页面专属内容 */
         .teams-section {
             padding: 80px 0;
@@ -201,11 +225,11 @@
             font-style: italic;
         }
         
-        /* 战队标志网格 */
+        /* 战队标志网格 - 调整为4x4布局 */
         .teams-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
             margin-bottom: 60px;
         }
         
@@ -240,7 +264,13 @@
             text-align: center;
         }
         
-        /* 战队介绍部分 */
+        /* 战队介绍部分 - 调整为4x4布局 */
+        .team-intro-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        
         .team-intro-section {
             background-color: var(--card-bg);
             border-radius: 15px;
@@ -263,12 +293,6 @@
             font-size: 20px;
             color: var(--dark);
             font-style: italic;
-        }
-        
-        .team-intro-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 40px;
         }
         
         .team-card {
@@ -294,34 +318,222 @@
             line-height: 1.7;
         }
         
-        /* 图片占位区域 */
-        .image-placeholder {
-            flex: 1;
-            min-width: 300px;
-            height: 400px;
-            background-color: var(--light);
+        /* 选手介绍页面CSS - 新添加的！ */
+        .players-section {
+            padding: 80px 0;
+            background-color: var(--background);
+        }
+        
+        .players-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .players-title h2 {
+            font-size: 42px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .players-title p {
+            font-size: 20px;
+            color: var(--dark);
+            font-style: italic;
+        }
+        
+        /* 選手表格部分 */
+        .players-table-section {
+            background-color: var(--card-bg);
             border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .players-table-section h3 {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+        }
+        
+        .players-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+        
+        .players-table th {
+            background-color: var(--primary);
+            color: white;
+            padding: 18px 15px;
+            text-align: center;
+            font-weight: 600;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .players-table th:first-child {
+            border-radius: 10px 0 0 0;
+        }
+        
+        .players-table th:last-child {
+            border-radius: 0 10px 0 0;
+            border-right: none;
+        }
+        
+        .players-table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            vertical-align: middle;
+        }
+        
+        .players-table tr:nth-child(even) {
+            background-color: rgba(0,0,0,0.02);
+        }
+        
+        .players-table tr:hover {
+            background-color: rgba(138, 154, 91, 0.05);
+        }
+        
+        .team-name {
+            font-weight: bold;
+            color: var(--primary);
+            background-color: rgba(138, 154, 91, 0.1);
+            width: 180px;
+        }
+        
+        .player-cell {
+            height: 80px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .player-cell:hover {
+            background-color: rgba(138, 154, 91, 0.1) !important;
+            transform: scale(1.02);
+        }
+        
+        /* 選手詳細介紹部分 */
+        .players-details-section {
+            background-color: var(--background);
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .players-details-section h3 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--dark);
+            font-size: 20px;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        
+        .players-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 30px;
+        }
+        
+        .player-detail-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
             display: flex;
-            flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .player-detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .player-detail-photo {
+            flex: 0 0 200px;
+            background-color: var(--light);
+            display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px dashed var(--secondary);
-            color: var(--dark);
-            font-size: 18px;
-            text-align: center;
             padding: 20px;
         }
         
-        .image-placeholder i {
-            font-size: 60px;
-            margin-bottom: 20px;
+        .photo-placeholder {
+            text-align: center;
+            color: var(--dark);
+        }
+        
+        .photo-placeholder i {
+            font-size: 80px;
+            margin-bottom: 15px;
             color: var(--secondary);
         }
         
-        .image-placeholder p {
-            margin-top: 10px;
-            font-size: 16px;
+        .player-detail-info {
+            flex: 1;
+            padding: 25px;
+        }
+        
+        .player-detail-info h4 {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .player-id-text {
             color: var(--dark);
+            font-weight: bold;
+        }
+        
+        .player-team, .player-position {
+            color: var(--text);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        
+        .player-desc {
+            color: var(--text);
+            line-height: 1.7;
+            margin: 15px 0;
+        }
+        
+        .player-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-label {
+            display: block;
+            color: var(--dark);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .stat-value {
+            display: block;
+            color: var(--primary);
+            font-size: 24px;
+            font-weight: bold;
         }
         
         /* 页脚 */
@@ -363,6 +575,20 @@
         }
         
         /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .teams-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .team-intro-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .players-details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         @media (max-width: 992px) {
             .intro-content {
                 flex-direction: column;
@@ -382,7 +608,11 @@
             }
             
             .teams-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .team-intro-content {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
@@ -408,7 +638,7 @@
                 font-size: 18px;
             }
             
-            .section-title h2, .teams-title h2 {
+            .section-title h2, .teams-title h2, .players-title h2 {
                 font-size: 32px;
             }
             
@@ -416,8 +646,18 @@
                 padding: 30px;
             }
             
-            .team-intro-content {
-                grid-template-columns: 1fr;
+            .players-table-section,
+            .players-details-section {
+                padding: 25px;
+            }
+            
+            .player-detail-card {
+                flex-direction: column;
+            }
+            
+            .player-detail-photo {
+                flex: 0 0 auto;
+                padding: 30px;
             }
         }
         
@@ -442,6 +682,25 @@
             .teams-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
+            }
+            
+            .team-logo {
+                height: 150px;
+                padding: 20px;
+            }
+            
+            .team-logo .logo-text {
+                font-size: 28px;
+            }
+            
+            .team-intro-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .players-table th,
+            .players-table td {
+                padding: 12px 8px;
+                font-size: 14px;
             }
         }
     </style>
@@ -504,427 +763,412 @@
         </section>
     </div>
 
-<!-- 替換整個戰隊介紹頁面部分 -->
-<div id="teams-page" class="page-content">
-    <section class="teams-section">
-        <div class="container">
-            <div class="teams-title">
-                <h2>战队介绍</h2>
-                <p>Team Introduction - 2024 KPL 春季赛参赛战队</p>
-            </div>
-            
-            <!-- 16支戰隊標誌網格 -->
-            <div class="teams-grid">
-                <!-- 原有8支戰隊 -->
-                <div class="team-logo">
-                    <div class="logo-text">AG</div>
-                    <div class="team-name">成都AG超玩会</div>
-                </div>
-                <div class="team-logo">
-                    <div class="logo-text">狼隊</div>
-                    <div class="team-name">重庆狼队</div>
-                </div>
-                <div class="team-logo">
-                    <div class="logo-text">E星</div>
-                    <div class="team-name">武汉eStarPro</div>
-                </div>
-                <div class="team-logo">
-                    <div class="logo-text">WB</div>
-                    <div class="team-name">北京WB</div>
-                </div>
-                <div class="team-logo">
-                    <div class="logo-text">DRG</div>
-                    <div class="team-name">佛山DRG</div>
-                </div>
-                <div class="team-logo">
-                    <div class="logo-text">TTG</div>
-                    <div class="team-name">广州TTG</div>
-                </div>
-                <div class="team-logo">
-                    <div class="logo-text">Hero</div>
-                    <div class="team-name">南京Hero久竞</div>
-                </div>
-                <div class="team-logo">
-                    <div class="logo-text">EDG</div>
-                    <div class="team-name">上海EDG.M</div>
+    <!-- 战队介绍页面内容 -->
+    <div id="teams-page" class="page-content">
+        <section class="teams-section">
+            <div class="container">
+                <div class="teams-title">
+                    <h2>战队介绍</h2>
+                    <p>Team Introduction - 2024 KPL 春季赛参赛战队</p>
                 </div>
                 
-                <!-- 新增8支戰隊 -->
-                <div class="team-logo">
-                    <div class="logo-text">DYG</div>
-                    <div class="team-name">深圳DYG</div>
-                </div>
-                <div class="team-logo">
-                    <div class="logo-text">JDG</div>
-                    <div class="team-name">北京JDG</div>
-                </div>
-                <div class="team-logo">
-                    <div class="logo-text">KSG</div>
-                    <div class="team-name">苏州KSG</div>
-                </div>
-                <div class="team-logo">
-                    <div class="logo-text">LGD</div>
-                    <div class="team-name">杭州LGD.NBW</div>
-                </div>
-                <div class="team-logo">
-                    <div class="logo-text">RNG</div>
-                    <div class="team-name">上海RNG.M</div>
-                </div>
-                <div class="team-logo">
-                    <div class="logo-text">RW</div>
-                    <div class="team-name">济南RW侠</div>
-                </div>
-                <div class="team-logo">
-                    <div class="logo-text">TES</div>
-                    <div class="team-name">长沙TES.A</div>
-                </div>
-                <div class="team-logo">
-                    <div class="logo-text">WE</div>
-                    <div class="team-name">西安WE</div>
-                </div>
-            </div>
-            
-            <!-- 戰隊介紹部分 - 擴充到16支隊伍 -->
-            <div class="team-intro-section">
-                <div class="team-intro-title">
-                    <h3>各战队详细介绍</h3>
-                    <p>Detailed Introduction of Each Team</p>
+                <!-- 16支战队标志网格 -->
+                <div class="teams-grid">
+                    <!-- 原有8支战队 -->
+                    <div class="team-logo">
+                        <div class="logo-text">AG</div>
+                        <div class="team-name">成都AG超玩会</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">狼隊</div>
+                        <div class="team-name">重庆狼队</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">E星</div>
+                        <div class="team-name">武汉eStarPro</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">WB</div>
+                        <div class="team-name">北京WB</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">DRG</div>
+                        <div class="team-name">佛山DRG</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">TTG</div>
+                        <div class="team-name">广州TTG</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">Hero</div>
+                        <div class="team-name">南京Hero久竞</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">EDG</div>
+                        <div class="team-name">上海EDG.M</div>
+                    </div>
+                    
+                    <!-- 新增8支战队 -->
+                    <div class="team-logo">
+                        <div class="logo-text">DYG</div>
+                        <div class="team-name">深圳DYG</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">JDG</div>
+                        <div class="team-name">北京JDG</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">KSG</div>
+                        <div class="team-name">苏州KSG</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">LGD</div>
+                        <div class="team-name">杭州LGD.NBW</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">RNG</div>
+                        <div class="team-name">上海RNG.M</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">RW</div>
+                        <div class="team-name">济南RW侠</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">TES</div>
+                        <div class="team-name">长沙TES.A</div>
+                    </div>
+                    <div class="team-logo">
+                        <div class="logo-text">WE</div>
+                        <div class="team-name">西安WE</div>
+                    </div>
                 </div>
                 
-                <div class="team-intro-content">
-                    <!-- 第1-8支戰隊 -->
-                    <div class="team-card">
-                        <h4>成都AG超玩会</h4>
-                        <p>戰隊介紹內容1 - 成都AG超玩会是KPL历史最悠久的战队之一，拥有庞大的粉丝基础。曾多次获得KPL亚军，以坚韧不拔的竞技精神著称。</p>
-                    </div>
-                    <div class="team-card">
-                        <h4>重庆狼队</h4>
-                        <p>戰隊介紹內容2 - 重庆狼队是KPL传统强队，多次夺得KPL总冠军。以严谨的战术体系和出色的团队执行力闻名。</p>
-                    </div>
-                    <div class="team-card">
-                        <h4>武汉eStarPro</h4>
-                        <p>戰隊介紹內容3 - 武汉eStarPro是KPL历史上夺冠次数最多的战队之一，以其侵略性的打法和出色的个人操作能力著称。</p>
-                    </div>
-                    <div class="team-card">
-                        <h4>北京WB</h4>
-                        <p>戰隊介紹內容4 - 北京WB前身为TS豚首，曾创造"奇迹之夜"逆袭夺冠的传奇。以坚韧的防守和出色的逆风翻盘能力闻名。</p>
-                    </div>
-                    <div class="team-card">
-                        <h4>佛山DRG</h4>
-                        <p>戰隊介紹內容5 - 佛山DRG前身为GK战队，以其创新的战术和年轻有活力的选手阵容著称，是KPL赛场上不可忽视的力量。</p>
-                    </div>
-                    <div class="team-card">
-                        <h4>广州TTG</h4>
-                        <p>戰隊介紹內容6 - 广州TTG以其出色的团队配合和战术执行力著称，曾多次进入KPL总决赛，是KPL赛场上的传统强队。</p>
-                    </div>
-                    <div class="team-card">
-                        <h4>南京Hero久竞</h4>
-                        <p>戰隊介紹內容7 - 南京Hero久竞以培养新人选手著称，拥有独特的青训体系，曾多次夺得KPL总冠军，培养出众多明星选手。</p>
-                    </div>
-                    <div class="team-card">
-                        <h4>上海EDG.M</h4>
-                        <p>戰隊介紹內容8 - 上海EDG.M是KPL老牌战队之一，以其稳定的发挥和顽强的比赛风格著称，拥有忠实的粉丝群体。</p>
+                <!-- 战队介绍部分 - 扩充到16支队伍 -->
+                <div class="team-intro-section">
+                    <div class="team-intro-title">
+                        <h3>各战队详细介绍</h3>
+                        <p>Detailed Introduction of Each Team</p>
                     </div>
                     
-                    <!-- 第9-16支戰隊 -->
-                    <div class="team-card">
-                        <h4>深圳DYG</h4>
-                        <p>戰隊介紹內容9 - 深圳DYG（原名DYG）是KPL实力强劲的战队，曾夺得2020年KPL秋季赛总冠军，以强势的打法著称。</p>
-                    </div>
-                    <div class="team-card">
-                        <h4>北京JDG</h4>
-                        <p>戰隊介紹內容10 - 北京JDG是KPL新兴力量，以其创新的战术和年轻的选手阵容在赛场上展现出强大的竞争力。</p>
-                    </div>
-                    <div class="team-card">
-                        <h4>苏州KSG</h4>
-                        <p>戰隊介紹內容11 - 苏州KSG（原名KSSC）在KPL赛场上以敢打敢拼的风格著称，经常在比赛中创造惊喜，是一支不可小觑的队伍。</p>
-                    </div>
-                    <div class="team-card">
-                        <h4>杭州LGD.NBW</h4>
-                        <p>戰隊介紹內容12 - 杭州LGD.NBW是LGD电竞俱乐部的王者荣耀分部，以其团队配合和战术执行力在KPL赛场上占有一席之地。</p>
-                    </div>
-                    <div class="team-card">
-                        <h4>上海RNG.M</h4>
-                        <p>戰隊介紹內容13 - 上海RNG.M是RNG电子竞技俱乐部的王者荣耀分部，以培养年轻选手和顽强的比赛风格著称。</p>
-                    </div>
-                    <div class="team-card">
-                        <h4>济南RW侠</h4>
-                        <p>戰隊介紹內容14 - 济南RW侠以其独特的"侠客"文化和坚韧的比赛风格著称，在KPL赛场上屡次创造佳绩。</p>
-                    </div>
-                    <div class="team-card">
-                        <h4>长沙TES.A</h4>
-                        <p>戰隊介紹內容15 - 长沙TES.A（原名TES）是滔搏电竞的王者荣耀分部，以其稳定的发挥和出色的团队配合能力著称。</p>
-                    </div>
-                    <div class="team-card">
-                        <h4>西安WE</h4>
-                        <p>戰隊介紹內容16 - 西安WE是KPL历史悠久的战队之一，以其培养新人和独特的战术体系在KPL赛场上占有一席之地。</p>
+                    <div class="team-intro-content">
+                        <!-- 第1-8支战队 -->
+                        <div class="team-card">
+                            <h4>成都AG超玩会</h4>
+                            <p>战队介绍内容1 - 成都AG超玩会是KPL历史最悠久的战队之一，拥有庞大的粉丝基础。曾多次获得KPL亚军，以坚韧不拔的竞技精神著称。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>重庆狼队</h4>
+                            <p>战队介绍内容2 - 重庆狼队是KPL传统强队，多次夺得KPL总冠军。以严谨的战术体系和出色的团队执行力闻名。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>武汉eStarPro</h4>
+                            <p>战队介绍内容3 - 武汉eStarPro是KPL历史上夺冠次数最多的战队之一，以其侵略性的打法和出色的个人操作能力著称。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>北京WB</h4>
+                            <p>战队介绍内容4 - 北京WB前身为TS豚首，曾创造"奇迹之夜"逆袭夺冠的传奇。以坚韧的防守和出色的逆风翻盘能力闻名。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>佛山DRG</h4>
+                            <p>战队介绍内容5 - 佛山DRG前身为GK战队，以其创新的战术和年轻有活力的选手阵容著称，是KPL赛场上不可忽视的力量。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>广州TTG</h4>
+                            <p>战队介绍内容6 - 广州TTG以其出色的团队配合和战术执行力著称，曾多次进入KPL总决赛，是KPL赛场上的传统强队。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>南京Hero久竞</h4>
+                            <p>战队介绍内容7 - 南京Hero久竞以培养新人选手著称，拥有独特的青训体系，曾多次夺得KPL总冠军，培养出众多明星选手。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>上海EDG.M</h4>
+                            <p>战队介绍内容8 - 上海EDG.M是KPL老牌战队之一，以其稳定的发挥和顽强的比赛风格著称，拥有忠实的粉丝群体。</p>
+                        </div>
+                        
+                        <!-- 第9-16支战队 -->
+                        <div class="team-card">
+                            <h4>深圳DYG</h4>
+                            <p>战队介绍内容9 - 深圳DYG（原名DYG）是KPL实力强劲的战队，曾夺得2020年KPL秋季赛总冠军，以强势的打法著称。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>北京JDG</h4>
+                            <p>战队介绍内容10 - 北京JDG是KPL新兴力量，以其创新的战术和年轻的选手阵容在赛场上展现出强大的竞争力。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>苏州KSG</h4>
+                            <p>战队介绍内容11 - 苏州KSG（原名KSSC）在KPL赛场上以敢打敢拼的风格著称，经常在比赛中创造惊喜，是一支不可小觑的队伍。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>杭州LGD.NBW</h4>
+                            <p>战队介绍内容12 - 杭州LGD.NBW是LGD电竞俱乐部的王者荣耀分部，以其团队配合和战术执行力在KPL赛场上占有一席之地。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>上海RNG.M</h4>
+                            <p>战队介绍内容13 - 上海RNG.M是RNG电子竞技俱乐部的王者荣耀分部，以培养年轻选手和顽强的比赛风格著称。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>济南RW侠</h4>
+                            <p>战队介绍内容14 - 济南RW侠以其独特的"侠客"文化和坚韧的比赛风格著称，在KPL赛场上屡次创造佳绩。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>长沙TES.A</h4>
+                            <p>战队介绍内容15 - 长沙TES.A（原名TES）是滔搏电竞的王者荣耀分部，以其稳定的发挥和出色的团队配合能力著称。</p>
+                        </div>
+                        <div class="team-card">
+                            <h4>西安WE</h4>
+                            <p>战队介绍内容16 - 西安WE是KPL历史悠久的战队之一，以其培养新人和独特的战术体系在KPL赛场上占有一席之地。</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</div>
-    <!-- 選手介紹頁面內容 -->
-<div id="players-page" class="page-content">
-    <section class="players-section">
-        <div class="container">
-            <div class="players-title">
-                <h2>选手介绍</h2>
-                <p>Partial list of players</p>
-            </div>
-            
-            <!-- 選手表格部分 -->
-            <div class="players-table-section">
-                <h3>部分选手名单</h3>
-                <div class="table-container">
-                    <table class="players-table">
-                        <thead>
-                            <tr>
-                                <th>战队</th>
-                                <th>对抗路</th>
-                                <th>打野</th>
-                                <th>中路</th>
-                                <th>发育路</th>
-                                <th>游走</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- 成都AG超玩会 -->
-                            <tr>
-                                <td class="team-name">成都AG超玩会</td>
-                                <td class="player-cell">
-                                    <div class="player-photo"></div>
-                                    <div class="player-id">111</div>
-                                </td>
-                                <td class="player-cell">
-                                    <div class="player-photo"></div>
-                                    <div class="player-id">111</div>
-                                </td>
-                                <td class="player-cell">
-                                    <div class="player-photo"></div>
-                                    <div class="player-id">111</div>
-                                </td>
-                                <td class="player-cell">
-                                    <div class="player-photo"></div>
-                                    <div class="player-id">111</div>
-                                </td>
-                                <td class="player-cell">
-                                    <div class="player-photo"></div>
-                                    <div class="player-id">111</div>
-                                </td>
-                            </tr>
-                            <!-- 重庆狼队 -->
-                            <tr>
-                                <td class="team-name">重庆狼队</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                            </tr>
-                            <!-- 武汉eStarPro -->
-                            <tr>
-                                <td class="team-name">武汉eStarPro</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                            </tr>
-                            <!-- 北京WB -->
-                            <tr>
-                                <td class="team-name">北京WB</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                            </tr>
-                            <!-- 佛山DRG -->
-                            <tr>
-                                <td class="team-name">佛山DRG</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                            </tr>
-                            <!-- 广州TTG -->
-                            <tr>
-                                <td class="team-name">广州TTG</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                            </tr>
-                            <!-- 南京Hero久竞 -->
-                            <tr>
-                                <td class="team-name">南京Hero久竞</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                            </tr>
-                            <!-- 上海EDG.M -->
-                            <tr>
-                                <td class="team-name">上海EDG.M</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                            </tr>
-                            <!-- 深圳DYG -->
-                            <tr>
-                                <td class="team-name">深圳DYG</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                            </tr>
-                            <!-- 北京JDG -->
-                            <tr>
-                                <td class="team-name">北京JDG</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                            </tr>
-                            <!-- 苏州KSG -->
-                            <tr>
-                                <td class="team-name">苏州KSG</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                            </tr>
-                            <!-- 杭州LGD.NBW -->
-                            <tr>
-                                <td class="team-name">杭州LGD.NBW</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                            </tr>
-                            <!-- 上海RNG.M -->
-                            <tr>
-                                <td class="team-name">上海RNG.M</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                            </tr>
-                            <!-- 济南RW侠 -->
-                            <tr>
-                                <td class="team-name">济南RW侠</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                            </tr>
-                            <!-- 长沙TES.A -->
-                            <tr>
-                                <td class="team-name">长沙TES.A</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                            </tr>
-                            <!-- 西安WE -->
-                            <tr>
-                                <td class="team-name">西安WE</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                                <td class="player-cell">111</td>
-                            </tr>
-                        </tbody>
-                    </table>
+        </section>
+    </div>
+
+    <!-- 选手介绍页面内容 -->
+    <div id="players-page" class="page-content">
+        <section class="players-section">
+            <div class="container">
+                <div class="players-title">
+                    <h2>选手介绍</h2>
+                    <p>Partial list of players</p>
                 </div>
-            </div>
-            
-            <!-- 選手詳細介紹部分 -->
-            <div class="players-details-section">
-                <h3>选手详细介绍</h3>
-                <p class="section-subtitle">Players Detailed Introduction</p>
                 
-                <div class="players-details-grid">
-                    <!-- 示例選手卡片 - 你可以複製這個格式添加更多 -->
-                    <div class="player-detail-card">
-                        <div class="player-detail-photo">
-                            <div class="photo-placeholder">
-                                <i class="fas fa-user"></i>
-                                <p>選手定妝照</p>
+                <!-- 選手表格部分 -->
+                <div class="players-table-section">
+                    <h3>部分选手名单</h3>
+                    <div class="table-container">
+                        <table class="players-table">
+                            <thead>
+                                <tr>
+                                    <th>战队</th>
+                                    <th>对抗路</th>
+                                    <th>打野</th>
+                                    <th>中路</th>
+                                    <th>发育路</th>
+                                    <th>游走</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- 成都AG超玩会 -->
+                                <tr>
+                                    <td class="team-name">成都AG超玩会</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                </tr>
+                                <!-- 重庆狼队 -->
+                                <tr>
+                                    <td class="team-name">重庆狼队</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                </tr>
+                                <!-- 武汉eStarPro -->
+                                <tr>
+                                    <td class="team-name">武汉eStarPro</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                </tr>
+                                <!-- 北京WB -->
+                                <tr>
+                                    <td class="team-name">北京WB</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                </tr>
+                                <!-- 佛山DRG -->
+                                <tr>
+                                    <td class="team-name">佛山DRG</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                </tr>
+                                <!-- 广州TTG -->
+                                <tr>
+                                    <td class="team-name">广州TTG</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                </tr>
+                                <!-- 南京Hero久竞 -->
+                                <tr>
+                                    <td class="team-name">南京Hero久竞</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                </tr>
+                                <!-- 上海EDG.M -->
+                                <tr>
+                                    <td class="team-name">上海EDG.M</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                </tr>
+                                <!-- 深圳DYG -->
+                                <tr>
+                                    <td class="team-name">深圳DYG</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                </tr>
+                                <!-- 北京JDG -->
+                                <tr>
+                                    <td class="team-name">北京JDG</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                </tr>
+                                <!-- 苏州KSG -->
+                                <tr>
+                                    <td class="team-name">苏州KSG</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                </tr>
+                                <!-- 杭州LGD.NBW -->
+                                <tr>
+                                    <td class="team-name">杭州LGD.NBW</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                </tr>
+                                <!-- 上海RNG.M -->
+                                <tr>
+                                    <td class="team-name">上海RNG.M</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                </tr>
+                                <!-- 济南RW侠 -->
+                                <tr>
+                                    <td class="team-name">济南RW侠</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                </tr>
+                                <!-- 长沙TES.A -->
+                                <tr>
+                                    <td class="team-name">长沙TES.A</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                </tr>
+                                <!-- 西安WE -->
+                                <tr>
+                                    <td class="team-name">西安WE</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                    <td class="player-cell">111</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- 選手詳細介紹部分 -->
+                <div class="players-details-section">
+                    <h3>选手详细介绍</h3>
+                    <p class="section-subtitle">Players Detailed Introduction</p>
+                    
+                    <div class="players-details-grid">
+                        <!-- 示例選手卡片 -->
+                        <div class="player-detail-card">
+                            <div class="player-detail-photo">
+                                <div class="photo-placeholder">
+                                    <i class="fas fa-user"></i>
+                                    <p>選手定妝照</p>
+                                </div>
+                            </div>
+                            <div class="player-detail-info">
+                                <h4>選手ID: <span class="player-id-text">111</span></h4>
+                                <p class="player-team">战队: 成都AG超玩会</p>
+                                <p class="player-position">位置: 对抗路</p>
+                                <p class="player-desc">選手介紹內容這裡放，你可以寫選手的個人簡介、擅長英雄、比賽風格、榮譽成就等詳細信息。</p>
+                                <div class="player-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">KDA</span>
+                                        <span class="stat-value">6.8</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">參團率</span>
+                                        <span class="stat-value">68%</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">勝率</span>
+                                        <span class="stat-value">72%</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="player-detail-info">
-                            <h4>選手ID: <span class="player-id-text">111</span></h4>
-                            <p class="player-team">战队: 成都AG超玩会</p>
-                            <p class="player-position">位置: 对抗路</p>
-                            <p class="player-desc">選手介紹內容這裡放，你可以寫選手的個人簡介、擅長英雄、比賽風格、榮譽成就等詳細信息。</p>
-                            <div class="player-stats">
-                                <div class="stat-item">
-                                    <span class="stat-label">KDA</span>
-                                    <span class="stat-value">6.8</span>
+                        
+                        <!-- 第二個選手卡片 -->
+                        <div class="player-detail-card">
+                            <div class="player-detail-photo">
+                                <div class="photo-placeholder">
+                                    <i class="fas fa-user"></i>
+                                    <p>選手定妝照</p>
                                 </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">參團率</span>
-                                    <span class="stat-value">68%</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">勝率</span>
-                                    <span class="stat-value">72%</span>
+                            </div>
+                            <div class="player-detail-info">
+                                <h4>選手ID: <span class="player-id-text">222</span></h4>
+                                <p class="player-team">战队: 重庆狼队</p>
+                                <p class="player-position">位置: 打野</p>
+                                <p class="player-desc">選手介紹內容這裡放，你可以寫選手的個人簡介、擅長英雄、比賽風格、榮譽成就等詳細信息。</p>
+                                <div class="player-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">KDA</span>
+                                        <span class="stat-value">7.2</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">參團率</span>
+                                        <span class="stat-value">75%</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">勝率</span>
+                                        <span class="stat-value">65%</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- 第二個選手卡片 -->
-                    <div class="player-detail-card">
-                        <div class="player-detail-photo">
-                            <div class="photo-placeholder">
-                                <i class="fas fa-user"></i>
-                                <p>選手定妝照</p>
-                            </div>
-                        </div>
-                        <div class="player-detail-info">
-                            <h4>選手ID: <span class="player-id-text">222</span></h4>
-                            <p class="player-team">战队: 重庆狼队</p>
-                            <p class="player-position">位置: 打野</p>
-                            <p class="player-desc">選手介紹內容這裡放，你可以寫選手的個人簡介、擅長英雄、比賽風格、榮譽成就等詳細信息。</p>
-                            <div class="player-stats">
-                                <div class="stat-item">
-                                    <span class="stat-label">KDA</span>
-                                    <span class="stat-value">7.2</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">參團率</span>
-                                    <span class="stat-value">75%</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">勝率</span>
-                                    <span class="stat-value">65%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 你可以繼續添加更多選手卡片 -->
                 </div>
             </div>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
+
     <!-- 图集欣赏页面内容 (暂未开发) -->
     <div id="gallery-page" class="page-content">
         <section class="teams-section">
@@ -1020,10 +1264,10 @@
             }
             
             // 添加一些动态效果
-            const placeholders = document.querySelectorAll('.image-placeholder, .team-logo');
+            const placeholders = document.querySelectorAll('.image-placeholder, .team-logo, .player-cell');
             placeholders.forEach(placeholder => {
                 placeholder.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px)';
+                    this.style.transform = 'translateY(-5px)';
                     this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
                 });
                 
